@@ -11,7 +11,7 @@ var defaultMetricStore = process.env.METRIC_STORE || 'atlas';
 
 window.spinnakerSettings = {
   checkForUpdates: true,
-  defaultProviders: ['aws', 'gce'],
+  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'dcos', 'openstack', 'oraclebmcs', 'ecs'],
   feedbackUrl: feedbackUrl,
   gateUrl: gateHost,
   bakeryDetailUrl: bakeryDetailUrl,
@@ -21,6 +21,12 @@ window.spinnakerSettings = {
   defaultCategory: 'serverGroup',
   defaultInstancePort: 80,
   providers: {
+    azure: {
+      defaults: {
+        account: 'azure-test',
+        region: 'westus'
+      },
+    },
     aws: {
       defaults: {
         account: 'test',
@@ -35,6 +41,14 @@ window.spinnakerSettings = {
       },
       useAmiBlockDeviceMappings: false,
     },
+    ecs: {
+      defaults: {
+        account: 'test',
+        region: 'us-east-1',
+        iamRole: 'BaseIAMRole',
+      },
+      defaultSecurityGroups: [],
+    },
     gce: {
       defaults: {
         account: 'my-google-account',
@@ -43,8 +57,47 @@ window.spinnakerSettings = {
       },
       associatePublicIpAddress: true,
     },
+    titus: {
+      defaults: {
+        account: 'titustestvpc',
+        region: 'us-east-1',
+        iamProfile: '{{application}}InstanceProfile',
+      },
+    },
+    oraclebmcs: {
+      defaults: {
+        account: 'DEFAULT',
+        region: 'us-phoenix-1',
+        bakeryRegions: ['us-phoenix-1']
+      }
+    },
+    openstack: {
+      defaults: {
+        account: 'test',
+        region: 'us-west-1'
+      },
+    },
+    kubernetes: {
+      defaults: {
+        account: 'my-kubernetes-account',
+        namespace: 'default',
+        proxy: 'localhost:8001',
+        internalDNSNameTemplate: '{{name}}.{{namespace}}.svc.cluster.local',
+        instanceLinkTemplate: '{{host}}/api/v1/proxy/namespaces/{{namespace}}/pods/{{name}}',
+        apiPrefix: 'api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#',
+      },
+    },
+    dcos: {
+      defaults: {
+        account: 'my-dcos-account'
+      },
+    },
+    appengine: {
+      defaults: {
+        account: 'my-appengine-account',
+      }
+    }
   },
-  whatsNew: {
     gistId: '32526cd608db3d811b38',
     fileName: 'news.md',
   },
