@@ -118,7 +118,7 @@ function configure(IS_TEST) {
         inject: true,
       }),
       new webpack.EnvironmentPlugin({
-        API_HOST: 'https://api-prestaging.spinnaker.mgmt.netflix.net',
+        API_HOST: 'http://localhost:8084',
         ENTITY_TAGS_ENABLED: true,
         FEEDBACK_URL: 'https://hootch.test.netflix.net/submit',
         FIAT_ENABLED: false,

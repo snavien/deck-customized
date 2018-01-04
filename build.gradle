@@ -35,7 +35,7 @@ task webpack(type: NodeTask) {
   workingDir '.'
   script = file('node_modules/webpack/bin/webpack.js')
   environment = [
-    "GATE_HOST": "api-prestaging.spinnaker.mgmt.netflix.net",
+    "GATE_HOST": "localhost:8084",
   ]
 }
 
