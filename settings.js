@@ -98,6 +98,7 @@ window.spinnakerSettings = {
       }
     }
   },
+  whatsNew: {
     gistId: '32526cd608db3d811b38',
     fileName: 'news.md',
   },
